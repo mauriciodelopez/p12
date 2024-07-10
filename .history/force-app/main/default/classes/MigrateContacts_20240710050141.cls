@@ -12,16 +12,16 @@ global with sharing class MigrateContacts {
         Map<String, String> response = new Map<String, String>();
         
         try {
-            // Cherche le contact dans SFDX par l'adresse email 
+            // Cherche le contact Busca el contacto en Salesforce por el correo electrónico
             List<Contact> existingContacts = [SELECT Id, Email FROM Contact WHERE Email = :Email LIMIT 1];
             
             if (!existingContacts.isEmpty()) {
-                // Le contact existe déjà dans salesforce
+                // El contacto ya existe en Salesforce
                 Contact existingContact = existingContacts[0];
                 response.put('SalesforceId', existingContact.Id);
                 response.put('Message', 'Contact already exists in Salesforce. CRM should be updated with this ID.');
             } else {
-                // Le contact n'existe pas, creée un nouveau
+                // El contacto no existe, crear uno nuevo
                 Contact newContact = new Contact(
                     FirstName = FirstName,
                     LastName = LastName,

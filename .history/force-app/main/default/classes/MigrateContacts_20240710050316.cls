@@ -21,7 +21,7 @@ global with sharing class MigrateContacts {
                 response.put('SalesforceId', existingContact.Id);
                 response.put('Message', 'Contact already exists in Salesforce. CRM should be updated with this ID.');
             } else {
-                // Le contact n'existe pas, creée un nouveau
+                // Le contact n'existe El contacto no existe, crear uno nuevo
                 Contact newContact = new Contact(
                     FirstName = FirstName,
                     LastName = LastName,
